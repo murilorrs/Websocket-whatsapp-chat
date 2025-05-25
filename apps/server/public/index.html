@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teste WebSocket</title>
+</head>
+<body>
+  <h1>Chat WebSocket</h1>
+  <input id="msgInput" placeholder="Digite uma mensagem..." />
+  <button onclick="sendMessage()">Enviar</button>
+
+  <ul id="chat"></ul>
+
+  <script>
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.onopen = () => {
+      console.log('✅ Conectado ao WebSocket');
+    };
+
+    socket.onmessage = (event) => {
+      const li = document.createElement('li');
+      li.textContent = '📩 ' + event.data;
+      document.getElementById('chat').appendChild(li);
+    };
+
+    function sendMessage() {
+      const input = document.getElementById('msgInput');
+      const msg = input.value;
+      socket.send(msg);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
+
