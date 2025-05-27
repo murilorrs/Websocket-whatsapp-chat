@@ -1,6 +1,6 @@
-import React from 'react';
-import { Skeleton } from '../components/ui/skeleton';
-import UnreadMessage from './UnreadMessage';
+import React from "react";
+import { Skeleton } from "@/components/ui/skeleton"; 
+import UnreadMessage from "./UnreadMessage";
 
 export interface ItemProps {
   name: string;
@@ -44,9 +44,7 @@ const ChatListItem: React.FC<ItemProps> = ({
         <div className="text-gray-400 text-sm">{lastMessage}</div>
       </div>
 
-      <div
-        className={`text-gray-400 text-sm pb-5 ${isUnread ? 'text-green-500' : ''}`}
-      >
+      <div className={`text-gray-400 text-sm pb-5 ${isUnread ? 'text-green-500' : ''}`}>
         {lastMessageTime}
       </div>
 

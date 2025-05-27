@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useChatStore } from '../state/chatStore';
+import { useChatStore } from '@/state/chatStore';
 import ChatListItem from './ChatListItem';
 
 const ChatList: React.FC = () => {
-  const { setChats, searchedChats } = useChatStore();
-  const [loading, setLoading] = useState<boolean>(true);
+  const { setChats, searchedChats } = useChatStore();  
+  const [loading, setLoading] = useState<boolean>(true); 
 
   useEffect(() => {
     const fetchChats = async () => {
       try {
         console.log('Fetching chats...');
-        const response = await fetch(
-          'https://react-whatsapp-app-api.vercel.app/api',
-        );
+        const response = await fetch('https://react-whatsapp-app-api.vercel.app/api');
         const data = await response.json();
-        setChats(data);
+        setChats(data); 
       } catch (error) {
-        console.error('Failed to fetch chats:', error);
+        console.error('Failed to fetch chats:', error); 
       } finally {
-        setLoading(false);
+        setLoading(false); 
       }
     };
 
-    fetchChats();
+    fetchChats(); 
   }, [setChats]);
 
   return (
@@ -37,7 +35,7 @@ const ChatList: React.FC = () => {
                   lastMessage=""
                   lastMessageTime=""
                   profilePicture=""
-                  isLoading={true}
+                  isLoading={true} 
                   isUnread={false}
                 />
               ))
