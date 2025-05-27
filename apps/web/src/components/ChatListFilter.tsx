@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useChatStore } from '@/state/chatStore'; 
+import { useChatStore } from '@/store/chatStore'; 
 import Filters from './Filters';
 
 const ChatListFilter: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useChatStore } from "@/state/chatStore"; 
+import { useChatStore } from "@/store/chatStore"; 
 import { FaSearch } from "react-icons/fa"; 
 
 const ChatListSearch: React.FC = () => {

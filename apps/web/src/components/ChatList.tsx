@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useChatStore } from '@/state/chatStore';
+import { useChatStore } from '@/store/chatStore';
 import ChatListItem from './ChatListItem';
 
 const ChatList: React.FC = () => {
@@ -9,7 +9,6 @@ const ChatList: React.FC = () => {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        console.log('Fetching chats...');
         const response = await fetch('https://react-whatsapp-app-api.vercel.app/api');
         const data = await response.json();
         setChats(data); 
