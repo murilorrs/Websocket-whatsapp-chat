@@ -7,8 +7,9 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "types": ["node" ],
     "outDir": "./dist"
   },
-  "include": ["apps/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
