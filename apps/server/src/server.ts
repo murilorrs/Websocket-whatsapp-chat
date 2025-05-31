@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 import http from 'http';
 import messagesRoutes from './routes/messagesRoutes';
 import { setupWebSocket } from './socket';

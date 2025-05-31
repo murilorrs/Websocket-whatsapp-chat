@@ -1,9 +1,8 @@
 import { messagesController } from '../controller/messagesController';
-
-const express = require('express');
+import express from 'express'
 
 const messagesRoutes = express.Router();
 
-messagesRoutes.get('/messages', messagesController.handleGetMessage);
+messagesRoutes.get('/', messagesController.handleGetMessage);
 
 export default messagesRoutes;

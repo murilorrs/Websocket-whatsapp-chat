@@ -1,3 +1,3 @@
 export function handleGetMessage(req: any, res: any) {
-  res.send('Hello World!');
+  res.send({message: 'server up and running'});
 }
