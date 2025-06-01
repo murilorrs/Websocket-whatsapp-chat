@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 type User = {
   id: string;
@@ -8,10 +8,10 @@ type User = {
 
 export default function useChat() {
   const [messages, setMessages] = useState<string[]>([]);
-  const [input, setInput] = useState('');
-  const [to, setTo] = useState('');
-  const [name, setName] = useState('');
-  const [tempName, setTempName] = useState('');
+  const [input, setInput] = useState("");
+  const [to, setTo] = useState("");
+  const [name, setName] = useState("");
+  const [tempName, setTempName] = useState("");
   const [showLoginPage, setShowLoginPage] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
 
@@ -19,20 +19,20 @@ export default function useChat() {
 
   useEffect(() => {
     if (name && socket.current === null) {
-      const ws = new WebSocket('ws://localhost:3000');
+      const ws = new WebSocket("ws://localhost:3000");
       socket.current = ws;
 
       ws.onopen = () => {
-        ws.send(JSON.stringify({ type: 'join', name }));
-        console.log('🔌 conectado');
+        ws.send(JSON.stringify({ type: "join", name }));
+        console.log("🔌 conectado");
       };
 
-      console.log('passou aqui');
+      console.log("passou aqui");
 
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
 
-        if (data.type === 'user') {
+        if (data.type === "user") {
           setUsers(
             data.users.map((user: User) => {
               return {
@@ -52,7 +52,7 @@ export default function useChat() {
 
       ws.onclose = () => {
         window.location.reload();
-        console.log('🔌 desconectado');
+        console.log("🔌 desconectado");
       };
     }
   }, [name]);
@@ -60,13 +60,13 @@ export default function useChat() {
   const send = () => {
     if (!socket.current || socket.current.readyState !== WebSocket.OPEN) return;
     const message = {
-      type: 'message',
+      type: "message",
       to,
       text: input,
     };
     socket.current.send(JSON.stringify(message));
     setMessages((prev) => [...prev, `[eu ➡ ${to}] ${input}`]);
-    setInput('');
+    setInput("");
   };
   return {
     setName,

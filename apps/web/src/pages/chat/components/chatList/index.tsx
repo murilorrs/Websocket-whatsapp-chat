@@ -1,6 +1,6 @@
-import LoginPage from '@/pages/login';
-import ChatListItem from './ChatListItem';
-import useChat from '../../hooks/useChat';
+import LoginPage from "@/pages/login";
+import ChatListItem from "./ChatListItem";
+import useChat from "../../hooks/useChat";
 
 export default function ChatList() {
   const {
@@ -31,8 +31,8 @@ export default function ChatList() {
             <ChatListItem
               key={user.id}
               name={user.name}
-              lastMessage={''}
-              lastMessageTime={'10:00 AM'}
+              lastMessage={""}
+              lastMessageTime={"10:00 AM"}
               profilePicture={user.profilePicture}
               isLoading={false}
               isUnread={false}
