@@ -29,7 +29,7 @@ export default function ChatPage() {
             alt="HyerDev"
             className="w-12 h-12 rounded-full object-cover mr-3"
           />
-          <h2 className="text-lg font-semibold">Hyerdev Chats</h2>
+          <h2 className="text-lg font-semibold">Conversas</h2>
         </header>
         <div className="flex items-center p-4">
           <ChatListSearch />
