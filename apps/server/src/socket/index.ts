@@ -41,6 +41,7 @@ export function setupWebSocket(server: Server) {
       users.forEach((sock, user) => {
         if (sock === ws) users.delete(user);
       });
+      console.log("Connections:", wss.clients.size);
       broadcastUsers();
     });
   });
