@@ -1,8 +1,8 @@
 import ChatListSearch from '@/pages/chat/components/chatList/ChatListSearch';
 
 import ChatListFilter from './components/chatList/ChatListFilter';
-import { ChatList } from './components/chatList';
 import MessagesPage from './components/messages';
+import ChatList from './components/chatList';
 
 export default function ChatPage() {
   return (
