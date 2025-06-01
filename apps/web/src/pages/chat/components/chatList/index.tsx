@@ -1,5 +1,5 @@
+import { useChat } from "@/context/chatContext";
 import ChatListItem from "./ChatListItem";
-import useChat from "../../hooks/useChat";
 
 export default function ChatList() {
   const { users } = useChat();

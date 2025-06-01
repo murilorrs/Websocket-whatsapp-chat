@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { ChatContext } from "./chatContext";
 
-type User = {
+export type User = {
   id: string;
   name: string;
   profilePicture: string;
 };
 
-export default function useChat() {
+export function ChatProvider({ children }: { children: React.ReactNode }) {
   // const [messages, setMessages] = useState<string[]>([]);
   // const [input, setInput] = useState("");
   // const [to, setTo] = useState("");
@@ -66,13 +67,18 @@ export default function useChat() {
   //   setMessages((prev) => [...prev, `[eu ➡ ${to}] ${input}`]);
   //   setInput("");
   // };
-
-  return {
-    setName,
-    tempName,
-    setTempName,
-    showLoginPage,
-    setShowLoginPage,
-    users,
-  };
+  return (
+    <ChatContext.Provider
+      value={{
+        setName,
+        tempName,
+        setTempName,
+        showLoginPage,
+        setShowLoginPage,
+        users,
+      }}
+    >
+      {children}
+    </ChatContext.Provider>
+  );
 }

@@ -1,31 +1,20 @@
 import ChatListSearch from "@/pages/chat/components/chatList/ChatListSearch";
+import { useChat } from "@/context/chatContext";
 
-import ChatListFilter from "./components/chatList/ChatListFilter";
-import MessagesPage from "./components/messages";
-import ChatList from "./components/chatList";
-import useChat from "./hooks/useChat";
-import LoginPage from "../login";
+import ChatListFilter from "./chat/components/chatList/ChatListFilter";
+import MessagesPage from "./chat/components/messages";
+import ChatList from "./chat/components/chatList";
+import LoginPage from "./login";
 
 export default function ChatPage() {
-  const { setName, tempName, setTempName, showLoginPage, setShowLoginPage } =
-    useChat();
-
-  if (showLoginPage) {
-    return (
-      <LoginPage
-        tempName={tempName}
-        setTempName={setTempName}
-        setName={setName}
-        setShowLoginPage={setShowLoginPage}
-      />
-    );
-  }
+  const { users, showLoginPage } = useChat();
+  if (showLoginPage) return <LoginPage />;
   return (
     <div className="flex h-screen text-gray-100">
       <aside className="w-1/3 bg-customDarkGreen border-r border-customGrey flex flex-col">
         <header className="flex items-center p-3.5 bg-customLightGreen border-b border-none">
           <img
-            src="hyerdev.png"
+            src={users[0]?.profilePicture}
             alt="HyerDev"
             className="w-12 h-12 rounded-full object-cover mr-3"
           />

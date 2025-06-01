@@ -1,22 +1,13 @@
-import type React from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useChat } from "@/context/chatContext";
 
-type LoginPageProps = {
-  tempName: string;
-  setTempName: React.Dispatch<React.SetStateAction<string>>;
-  setName: React.Dispatch<React.SetStateAction<string>>;
-  setShowLoginPage: React.Dispatch<React.SetStateAction<boolean>>;
-};
+export default function LoginPage() {
+  const { setName, tempName, setTempName, setShowLoginPage } = useChat();
 
-export default function LoginPage({
-  tempName,
-  setTempName,
-  setName,
-  setShowLoginPage,
-}: LoginPageProps) {
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     setName(tempName.trim());
     setShowLoginPage(false);
   };
@@ -62,7 +53,7 @@ export default function LoginPage({
             disabled={!tempName.trim()}
             className="w-full h-12 bg-[#25d366] hover:bg-[#20bd5a] text-white font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            "Entrar"
+            Entrar
           </Button>
         </form>
 
