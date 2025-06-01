@@ -1,27 +1,8 @@
-import LoginPage from "@/pages/login";
 import ChatListItem from "./ChatListItem";
 import useChat from "../../hooks/useChat";
 
 export default function ChatList() {
-  const {
-    setName,
-    tempName,
-    setTempName,
-    showLoginPage,
-    setShowLoginPage,
-    users,
-  } = useChat();
-
-  if (showLoginPage) {
-    return (
-      <LoginPage
-        tempName={tempName}
-        setTempName={setTempName}
-        setName={setName}
-        setShowLoginPage={setShowLoginPage}
-      />
-    );
-  }
+  const { users } = useChat();
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 pb-4">

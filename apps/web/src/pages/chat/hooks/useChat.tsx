@@ -7,9 +7,9 @@ type User = {
 };
 
 export default function useChat() {
-  const [messages, setMessages] = useState<string[]>([]);
-  const [input, setInput] = useState("");
-  const [to, setTo] = useState("");
+  // const [messages, setMessages] = useState<string[]>([]);
+  // const [input, setInput] = useState("");
+  // const [to, setTo] = useState("");
   const [name, setName] = useState("");
   const [tempName, setTempName] = useState("");
   const [showLoginPage, setShowLoginPage] = useState(true);
@@ -27,21 +27,17 @@ export default function useChat() {
         console.log("🔌 conectado");
       };
 
-      console.log("passou aqui");
-
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
-
         if (data.type === "user") {
-          setUsers(
-            data.users.map((user: User) => {
-              return {
-                id: user.id,
-                name: user.name,
-                profilePicture: user.profilePicture,
-              };
-            }),
-          );
+          const usersData = data.users.map((user: User) => {
+            return {
+              id: user.id,
+              name: user.name,
+              profilePicture: user.profilePicture,
+            };
+          });
+          setUsers(usersData);
         }
 
         // if (data.type === 'message') {
@@ -57,17 +53,18 @@ export default function useChat() {
     }
   }, [name]);
 
-  const send = () => {
-    if (!socket.current || socket.current.readyState !== WebSocket.OPEN) return;
-    const message = {
-      type: "message",
-      to,
-      text: input,
-    };
-    socket.current.send(JSON.stringify(message));
-    setMessages((prev) => [...prev, `[eu ➡ ${to}] ${input}`]);
-    setInput("");
-  };
+  // const send = () => {
+  //   if (!socket.current || socket.current.readyState !== WebSocket.OPEN) return;
+  //   const message = {
+  //     type: "message",
+  //     to,
+  //     text: input,
+  //   };
+  //   socket.current.send(JSON.stringify(message));
+  //   setMessages((prev) => [...prev, `[eu ➡ ${to}] ${input}`]);
+  //   setInput("");
+  // };
+
   return {
     setName,
     tempName,

@@ -1,10 +1,25 @@
-import ChatListSearch from '@/pages/chat/components/chatList/ChatListSearch';
+import ChatListSearch from "@/pages/chat/components/chatList/ChatListSearch";
 
-import ChatListFilter from './components/chatList/ChatListFilter';
-import MessagesPage from './components/messages';
-import ChatList from './components/chatList';
+import ChatListFilter from "./components/chatList/ChatListFilter";
+import MessagesPage from "./components/messages";
+import ChatList from "./components/chatList";
+import useChat from "./hooks/useChat";
+import LoginPage from "../login";
 
 export default function ChatPage() {
+  const { setName, tempName, setTempName, showLoginPage, setShowLoginPage } =
+    useChat();
+
+  if (showLoginPage) {
+    return (
+      <LoginPage
+        tempName={tempName}
+        setTempName={setTempName}
+        setName={setName}
+        setShowLoginPage={setShowLoginPage}
+      />
+    );
+  }
   return (
     <div className="flex h-screen text-gray-100">
       <aside className="w-1/3 bg-customDarkGreen border-r border-customGrey flex flex-col">
