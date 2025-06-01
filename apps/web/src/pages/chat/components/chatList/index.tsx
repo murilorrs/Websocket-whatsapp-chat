@@ -33,7 +33,7 @@ export default function ChatList() {
               name={user.name}
               lastMessage={''}
               lastMessageTime={'10:00 AM'}
-              profilePicture={''}
+              profilePicture={user.profilePicture}
               isLoading={false}
               isUnread={false}
             />

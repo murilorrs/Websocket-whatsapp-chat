@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 type User = {
   id: string;
   name: string;
+  profilePicture: string;
 };
 
 export default function useChat() {
@@ -26,12 +27,10 @@ export default function useChat() {
         console.log('🔌 conectado');
       };
 
+      console.log('passou aqui');
+
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
-        if (data.type === 'message') {
-          setMessages((prev) => [...prev, `[${data.from}] ${data.text}`]);
-          return;
-        }
 
         if (data.type === 'user') {
           setUsers(
@@ -39,13 +38,22 @@ export default function useChat() {
               return {
                 id: user.id,
                 name: user.name,
+                profilePicture: user.profilePicture,
               };
             }),
           );
         }
+
+        // if (data.type === 'message') {
+        //   setMessages((prev) => [...prev, `[${data.from}] ${data.text}`]);
+        //   return;
+        // }
       };
 
-      ws.onclose = () => console.log('🔌 desconectado');
+      ws.onclose = () => {
+        window.location.reload();
+        console.log('🔌 desconectado');
+      };
     }
   }, [name]);
 
