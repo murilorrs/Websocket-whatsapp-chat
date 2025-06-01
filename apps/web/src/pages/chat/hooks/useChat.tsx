@@ -40,6 +40,8 @@ export default function useChat() {
           setUsers(usersData);
         }
 
+        // TODO: Trocar de user pra chats. pra user ser o q ta logado
+
         // if (data.type === 'message') {
         //   setMessages((prev) => [...prev, `[${data.from}] ${data.text}`]);
         //   return;
