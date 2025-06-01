@@ -68,11 +68,11 @@ export default function LoginPage({
 
         <div className="text-center mt-8">
           <p className="text-[#8696a0] text-xs">
-            Ao continuar, você concorda com nossos
+            Ao continuar, você concorda com nossos{" "}
             <span className="text-[#53bdeb] cursor-pointer hover:underline">
-              Termos de Serviço
+              Termos de Serviço{" "}
             </span>
-            e
+            e{" "}
             <span className="text-[#53bdeb] cursor-pointer hover:underline">
               Política de Privacidade
             </span>
